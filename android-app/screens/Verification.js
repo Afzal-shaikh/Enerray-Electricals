@@ -1,17 +1,21 @@
 import React from 'react';
 import {StyleSheet, View,Text,TextInput,Button,Dimensions} from "react-native";
-import WavyHeader from '../components/WavyHeader'
+import WavyHeader from '../components/WavyHeader';
+import globalStyles from '../styles/globalStyles';
 
-export default function Login(){
+export default function Verification(){
     return(
-    <View style = {styles.container}>
+    <View style={styles.container}>
         <WavyHeader/>
-      <Text style={styles.text}>User Name</Text>
-      <TextInput style={styles.textInput} placeholder="Enter UserName" />
-      <Text style={styles.text} > Password </Text>
-      <TextInput style={styles.textInput}  placeholder="Enter Password" secureTextEntry={true} />
+      <Text style={styles.text}>Mobile N0.</Text>
+      <TextInput style={styles.textInput} placeholder="Enter Mobile N0."/>
+
+      <Text style={styles.text} > OTP </Text>
+      <TextInput style={styles.textInput}  placeholder="Enter OTP" secureTextEntry={true}/>
+
         <View style={styles.button} >
             <Button style={styles.button} title = "Submit" />
+
         </View>
     </View>
     );

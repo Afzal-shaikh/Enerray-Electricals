@@ -2,13 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './screens/LogIn';
-
+import Registration from './screens/Registration';
+import Verification from './screens/Verification';
+import Category from './screens/Category';
+import Products from './screens/Products';
 
 export default function App() {
   return (
     <View style={styles.container}>
     
-     <Login/>
+     {/* <Login/> */}
+     {/* <Registration/> */}
+     {/* <Verification/> */}
+     {/* <Category/> */}
+     <Products/>
+    
     </View>
   );
 }
