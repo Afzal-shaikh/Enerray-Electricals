@@ -6,6 +6,7 @@ import Registration from './screens/Registration';
 import Verification from './screens/Verification';
 import Category from './screens/Category';
 import Products from './screens/Products';
+import Description from './screens/Description';
 
 export default function App() {
   return (
@@ -15,7 +16,8 @@ export default function App() {
      {/* <Registration/> */}
      {/* <Verification/> */}
      {/* <Category/> */}
-     <Products/>
+     {/* <Products/> */}
+     <Description/>
     
     </View>
   );

@@ -8,7 +8,7 @@ export default function Category(){
         <WavyHeader/>
         <View style = {styles.categoryView}>
         <Image  source ={require('../assets/logo1.png')} style = {styles.image}/>
-        <Image style = {styles.image}/>
+        <Image source ={require('../assets/logo1.png')} style = {styles.image}/>
         </View>
     </View>
     );
