@@ -16,8 +16,8 @@ export default function App() {
      {/* <Registration/> */}
      {/* <Verification/> */}
      {/* <Category/> */}
-     {/* <Products/> */}
-     <Description/>
+     <Products/>
+     {/* <Description/> */}
     
     </View>
   );

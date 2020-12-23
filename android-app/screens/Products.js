@@ -21,7 +21,8 @@ export default function Products() {
     return(
         <View style = {styles.container}>
         <WavyHeader />
-       <FlatList
+        <View>
+        <FlatList 
            data = {People}
            renderItem = {({item}) => (
               
@@ -31,16 +32,17 @@ export default function Products() {
            numColumns = {2}
        />
        </View>
+       </View>
     )
 }
 
 const itemMargin = 10;
-const itemWidth = (width - 40)
+const itemWidth = (width/2)- 20
 const styles = StyleSheet.create({
     container :{
         flex :1,
         backgroundColor : "blue",
-        paddingTop:40,
+        paddingTop: 40,
         paddingHorizontal : 20,
         alignContent : 'center',
         justifyContent : "center"
@@ -48,6 +50,7 @@ const styles = StyleSheet.create({
     },
     item : {
        marginHorizontal : itemMargin,
+       marginTop : itemMargin,
         width : itemWidth,
         height : itemWidth,
         backgroundColor : "cyan"
