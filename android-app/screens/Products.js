@@ -1,52 +1,43 @@
-import React, { useState  } from "react";
-import { StyleSheet, View, Text, FlatList, Dimensions, Image } from "react-native";
-import WavyHeader from "../components/WavyHeader";
+import React, { useEffect, useState  } from "react";
+import { StyleSheet, View, Text, FlatList, Dimensions, Image, ImageBackground } from "react-native";
+
 
 const { width, height } = Dimensions.get("window");
 
 export default function Products() {
 
-  const getProductsFromApi = () => {
-    return fetch('https://www.rudvedatrading.com/api/productshowall/fan')
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-  
-  const [People, setPeople] = useState([
-    { name: "shaun1", key: "1" },
-    { name: "shaun2", key: "2" },
-    { name: "shaun3", key: "3" },
-    { name: "shaun4", key: "4" },
-    { name: "shaun5", key: "5" },
-    { name: "shaun6", key: "6" },
-    { name: "shaun7", key: "7" },
-    { name: "shaun8", key: "8" },
-    { name: "shaun9", key: "9" },
-    { name: "shaun0", key: "0" },
-    { name: "shaun0", key: "10" },
-    
-  ]);
+  const [isLoading, setLoading] = useState(true);
+  const[data,setData] = useState([]);
+  console.log(data)
+
+  useEffect(()=>{
+    fetch('http://www.rudvedatrading.com/api/productshowall/fan')
+    .then((response) => response.json())
+    .then((json) => setData(json))
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
+  },[]);
+
   return (
     <View style={styles.container}>
-      {/* <View style={styles.childView}><WavyHeader/></View> */}
-      <View style={styles.childView}>
+
+  {isLoading ? <Text>Loading...</Text> : (
+    <View style={styles.childView}>
         <FlatList
-          data={People}
+          data={data.allproductdata.data}
           renderItem={({ item }) => (
             <View style={styles.item}>
-            <Text >{item.name}</Text>
-            <Image style={styles.itemImage} source={{ uri: 'http://rudvedatrading.com/images/DIANA/DIANA.png',}} />
+            <ImageBackground style={styles.itemImage} source={{ uri: item.product_thumbnail_path }}>
+            <View style={{position: 'absolute', top: 0, left: 0,  justifyContent: 'center', alignItems: 'center'}}>
+            <Text >{item.user_product_id}</Text>
+            </View>
+            </ImageBackground>
             </View>
           )}
           numColumns={2}
         />
       </View>
-
+  )}     
     </View>
   );
 }
