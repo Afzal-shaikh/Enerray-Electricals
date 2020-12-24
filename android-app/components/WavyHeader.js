@@ -62,10 +62,10 @@ import {
   
   const styles = StyleSheet.create({
     container: {
-      flex: 0.5,
+      flex: 1,
       alignItems: "center",
       justifyContent: "center",
-        backgroundColor: '#fff',
+        backgroundColor: 'red',
     },
     image: {
         flex: 1,

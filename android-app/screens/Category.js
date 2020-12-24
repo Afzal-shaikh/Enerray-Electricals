@@ -6,10 +6,12 @@ export default function Category(){
     return(
     <View style = {styles.container}>
         <WavyHeader/>
+       
         <View style = {styles.categoryView}>
         <Image  source ={require('../assets/logo1.png')} style = {styles.image}/>
         <Image source ={require('../assets/logo1.png')} style = {styles.image}/>
         </View>
+        
     </View>
     );
 }
@@ -19,13 +21,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    // justifyContent: "center",
+    justifyContent: "center",
   },
   categoryView : {
       flexDirection : "row",
       justifyContent: "center",
       marginTop : 100
-
   },
   image:{
       backgroundColor : "black",

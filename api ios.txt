@@ -1,0 +1,19 @@
+1)(get)www.rudvedatrading.com/api/productshowall/type
+   ex:www.rudvedatrading.com/api/productshowall/fan
+
+2)(post)www.rudvedatrading.com/api/createuser
+       user_name
+       user_phone
+       user_mail
+       user_password
+
+3)(post)www.rudvedatrading.com/api/userlogin
+         user_name
+         user_password
+
+4)(get)www.rudvedatrading.com/api/productshow/id
+       ex:www.rudvedatrading.com/api/productshow/1
+
+
+5)(get)www.rudvedatrading.com/api/productsearch/search/type
+   ex:www.rudvedatrading.com/api/productsearch/f/fan
