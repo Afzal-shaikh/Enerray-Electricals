@@ -1,9 +1,10 @@
 import React from 'react';
-import {StyleSheet, View,Dimensions ,Image} from "react-native";
+import {StyleSheet, View,Dimensions ,Image, ScrollView} from "react-native";
 import WavyHeader from '../components/WavyHeader'
 
 export default function Category(){
     return(
+      <ScrollView>
     <View style = {styles.container}>
         <WavyHeader/>
        
@@ -13,6 +14,7 @@ export default function Category(){
         </View>
         
     </View>
+    </ScrollView>
     );
 }
 const { width, height } = Dimensions.get("window");
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
   categoryView : {
       flexDirection : "row",
       justifyContent: "center",
-      marginTop : 100
   },
   image:{
       backgroundColor : "black",

@@ -32,4 +32,8 @@ export const globalStyles = StyleSheet.create({
     width: width * 0.5,
     marginTop: 20,
   },
+  textLink : {
+    color : "blue"
+    
+  },
 });

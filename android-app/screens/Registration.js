@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet ,View,Text,TextInput,Button ,Dimensions, ScrollView} from "react-native";
+import { StyleSheet ,View,Text,TextInput,Button ,Dimensions, ScrollView , TouchableOpacity} from "react-native";
 import {globalStyles} from '../styles/globalStyles';
 import WavyHeader from '../components/WavyHeader'
 
@@ -27,6 +27,15 @@ export default function Registration(){
         <View style={globalStyles.button} >
             <Button style={globalStyles.button} title = "Submit" />
         </View>
+
+        <View style = {{ marginTop : 20 ,}}> 
+        <Text>Already a member? 
+        <TouchableOpacity>
+        <Text style = {globalStyles.textLink }> Log in</Text>
+        </TouchableOpacity>
+        </Text>
+        </View>
+
     </View>
     </ScrollView>
     );

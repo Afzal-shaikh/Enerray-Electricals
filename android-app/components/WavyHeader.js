@@ -32,7 +32,7 @@ import {
               cx={width / 2}
             cy={height / 5}
             r= {width / 5 /2}
-            stroke="red"
+            stroke="none"
             fill = "#fff" 
             />
             </ClipPath>
@@ -65,7 +65,7 @@ import {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
-        backgroundColor: 'red',
+        backgroundColor: '#fff',
     },
     image: {
         flex: 1,

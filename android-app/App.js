@@ -24,7 +24,7 @@ export default function App() {
         {/* <Verification/> */}
         {/* <Category /> */}
         {/* <Products/> */}
-        <Description/>
+        {/* <Description/> */}
       </View>
    
   );

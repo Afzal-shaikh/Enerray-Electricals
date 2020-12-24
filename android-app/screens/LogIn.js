@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View,Text,TextInput,Button,Dimensions, ScrollView} from "react-native";
+import {StyleSheet, View,Text,TextInput,Button,Dimensions, ScrollView, TouchableOpacity} from "react-native";
 import WavyHeader from '../components/WavyHeader';
 import {globalStyles} from '../styles/globalStyles';
 
@@ -14,6 +14,13 @@ export default function Login(){
       <TextInput style={globalStyles.textInput}  placeholder="Enter Password" secureTextEntry={true} />
         <View style={globalStyles.button} >
             <Button style={globalStyles.button} title = "Submit" />
+        </View>
+        <View style = {{ marginTop : 20 ,}}> 
+        <Text>Need an account ? 
+        <TouchableOpacity>
+        <Text style = {globalStyles.textLink }> Sign up</Text>
+        </TouchableOpacity>
+        </Text>
         </View>
     </View>
     </ScrollView>
