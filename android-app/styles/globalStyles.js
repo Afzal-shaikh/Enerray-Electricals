@@ -8,7 +8,7 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    marginBottom : 100
+    marginBottom : 100,
     // justifyContent: "center",
   },
   textInput: {
@@ -36,4 +36,7 @@ export const globalStyles = StyleSheet.create({
     color : "blue"
     
   },
+  scrollView : {
+    backgroundColor : "#fff"
+  }
 });

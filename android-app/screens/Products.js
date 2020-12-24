@@ -1,10 +1,11 @@
 import React, { useEffect, useState  } from "react";
 import { StyleSheet, View, Text, FlatList, Dimensions, Image, ImageBackground } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 const { width, height } = Dimensions.get("window");
 
-export default function Products() {
+export default function Products(props) {
 
   const [isLoading, setLoading] = useState(true);
   const[data,setData] = useState([]);
@@ -26,13 +27,13 @@ export default function Products() {
         <FlatList
           data={data.allproductdata.data}
           renderItem={({ item }) => (
-            <View style={styles.item}>
+            <TouchableOpacity style={styles.item} onPress = {() => { props.navigation.push("Description")}}>
             <ImageBackground style={styles.itemImage} source={{ uri: item.product_thumbnail_path }}>
             <View style={{position: 'absolute', top: 0, left: 0,  justifyContent: 'center', alignItems: 'center'}}>
             <Text >{item.user_product_id}</Text>
             </View>
             </ImageBackground>
-            </View>
+            </TouchableOpacity>
           )}
           numColumns={2}
         />
@@ -43,7 +44,7 @@ export default function Products() {
 }
 
 const itemMargin = 1;
-const itemWidth = width / 2 - 20;
+const itemWidth = width / 2 ;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

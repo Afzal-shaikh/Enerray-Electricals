@@ -3,9 +3,9 @@ import { StyleSheet ,View,Text,TextInput,Button ,Dimensions, ScrollView , Toucha
 import {globalStyles} from '../styles/globalStyles';
 import WavyHeader from '../components/WavyHeader'
 
-export default function Registration(){
+export default function Registration(props){
     return(
-    <ScrollView>
+    <ScrollView style={globalStyles.scrollView}>
         <View style ={styles.container}>
     <WavyHeader/>
       <Text style={globalStyles.text}>Full Name</Text>
@@ -30,7 +30,7 @@ export default function Registration(){
 
         <View style = {{ marginTop : 20 ,}}> 
         <Text>Already a member? 
-        <TouchableOpacity>
+        <TouchableOpacity  onPress = {() => { props.navigation.replace("Login")}} >
         <Text style = {globalStyles.textLink }> Log in</Text>
         </TouchableOpacity>
         </Text>

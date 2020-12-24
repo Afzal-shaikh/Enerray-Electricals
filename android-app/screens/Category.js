@@ -1,16 +1,23 @@
 import React from 'react';
 import {StyleSheet, View,Dimensions ,Image, ScrollView} from "react-native";
-import WavyHeader from '../components/WavyHeader'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import WavyHeader from '../components/WavyHeader';
+import {globalStyles} from '../styles/globalStyles';
 
-export default function Category(){
+export default function Category(props){
     return(
-      <ScrollView>
+      <ScrollView style = {globalStyles.scrollView}>
     <View style = {styles.container}>
         <WavyHeader/>
        
         <View style = {styles.categoryView}>
+        <TouchableOpacity>
         <Image  source ={require('../assets/logo1.png')} style = {styles.image}/>
+        </TouchableOpacity>
+       
+        <TouchableOpacity onPress = {() => { props.navigation.push("Products")}}>
         <Image source ={require('../assets/logo1.png')} style = {styles.image}/>
+        </TouchableOpacity>
         </View>
         
     </View>

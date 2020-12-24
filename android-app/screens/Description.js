@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   FlatList,
   ImageBackground,
+  ActivityIndicator,
 } from "react-native";
 import FlatListSlider from "../components/FLatListSlider";
 
@@ -30,7 +31,13 @@ export default function Description() {
   return (
     <View style={styles.container}>
       {isLoading ? (
-        <Text>Loading...</Text>
+        <View style = {{flex : 1, alignContent : "center",justifyContent : "center"}}>
+          <ActivityIndicator
+            animating= {true}
+            size="small"
+            color="#00ff00"
+          />
+        </View>
       ) : (
         <SafeAreaView>
           <ScrollView>
@@ -84,15 +91,15 @@ export default function Description() {
               </View>
             )}
 
-             {/* Audio Player View  */}
+            {/* Audio Player View  */}
 
-          <View>
-            <Text>Audio Player here</Text>
-          </View>
+            <View>
+              <Text>Audio Player here</Text>
+            </View>
 
             {/* Flatlist horizontal */}
             <FlatList
-            horizontal
+              horizontal
               data={data.otherproducts}
               renderItem={({ item }) => (
                 <View style={styles.item}>
@@ -114,7 +121,6 @@ export default function Description() {
                   </ImageBackground>
                 </View>
               )}
-              
             />
           </ScrollView>
           <View style={styles.footer}>
@@ -122,8 +128,6 @@ export default function Description() {
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
           </View>
-
-         
         </SafeAreaView>
       )}
     </View>
