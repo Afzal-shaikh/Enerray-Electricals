@@ -34,7 +34,7 @@ export default function Description() {
         <View style = {{flex : 1, alignContent : "center",justifyContent : "center"}}>
           <ActivityIndicator
             animating= {true}
-            size="small"
+            size="large"
             color="#00ff00"
           />
         </View>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState  } from "react";
-import { StyleSheet, View, Text, FlatList, Dimensions, Image, ImageBackground } from "react-native";
+import { StyleSheet, View, Text, FlatList, Dimensions, Image, ImageBackground ,ActivityIndicator } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
@@ -22,7 +22,14 @@ export default function Products(props) {
   return (
     <View style={styles.container}>
 
-  {isLoading ? <Text>Loading...</Text> : (
+  {isLoading ?
+  ( <View style = {{flex : 1, alignContent : "center",justifyContent : "center"}}>
+          <ActivityIndicator
+            animating= {true}
+            size="large"
+            color="#00ff00"
+          />
+        </View> ) : (
     <View style={styles.childView}>
         <FlatList
           data={data.allproductdata.data}
