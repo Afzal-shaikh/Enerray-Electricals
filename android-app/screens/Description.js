@@ -124,7 +124,7 @@ export default function Description() {
             />
           </ScrollView>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.Button}>
+            <TouchableOpacity style={styles.Button} onPress={getAQuote()}>
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
           </View>
@@ -198,3 +198,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+
