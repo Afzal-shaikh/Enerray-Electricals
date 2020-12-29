@@ -13,7 +13,8 @@ export default (ChildItem = ({
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => onPress(index)}>
+      // onPress={() => onPress(index)}
+      >
       <Image
         style={[styles.image, style, {height: height}]}
         source={local ? item[imageKey] : {uri: item[imageKey]}}

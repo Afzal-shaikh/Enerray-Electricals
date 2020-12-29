@@ -124,7 +124,7 @@ export default function Description() {
             />
           </ScrollView>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.Button} onPress={getAQuote()}>
+            <TouchableOpacity style={styles.Button} >
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
           </View>
