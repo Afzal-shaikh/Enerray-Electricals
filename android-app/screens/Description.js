@@ -95,6 +95,7 @@ export default function Description() {
 
             <View>
               <Text>Audio Player here</Text>
+              {/* this.props.navigation.navigate('player', {title:__TITLE__, filepath:__AUDIO_FILEPATH__}); */}
             </View>
 
             {/* Flatlist horizontal */}

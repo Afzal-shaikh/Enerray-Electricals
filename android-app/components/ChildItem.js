@@ -1,5 +1,7 @@
 import React from 'react';
-import {TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {TouchableOpacity, Image, StyleSheet,Dimensions} from 'react-native';
+import ImageZoom from 'react-native-image-pan-zoom';
+
 
 export default (ChildItem = ({
   item,
@@ -11,7 +13,19 @@ export default (ChildItem = ({
   height
 }) => {
   return (
-    <TouchableOpacity
+
+    <ImageZoom 
+    cropWidth={height}
+    cropHeight={height}
+    imageWidth={200}
+    imageHeight={200}>
+  <Image style={{width:200, height:200}}
+    source={{uri:item[imageKey]}}/>
+</ImageZoom>
+
+);
+
+    {/* <TouchableOpacity
       style={styles.container}
       // onPress={() => onPress(index)}
       >
@@ -19,8 +33,9 @@ export default (ChildItem = ({
         style={[styles.image, style, {height: height}]}
         source={local ? item[imageKey] : {uri: item[imageKey]}}
       />
-    </TouchableOpacity>
-  );
+    </TouchableOpacity> */}
+
+
 });
 
 const styles = StyleSheet.create({

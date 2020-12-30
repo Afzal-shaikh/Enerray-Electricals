@@ -6,6 +6,7 @@ import Verification from "../screens/Verification";
 import Category from "../screens/Category";
 import Products from "../screens/Products";
 import Description from "../screens/Description";
+import PlayerScreen from "../components/AudioPlayer";
 
 
 const AppNavigator = createStackNavigator({
@@ -30,7 +31,8 @@ const AppNavigator = createStackNavigator({
     },
     Description : {
         screen : Description,
-    }
+    },
+
 });
 
 export default createAppContainer(AppNavigator) 

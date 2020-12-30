@@ -81,7 +81,7 @@ export default class FlatListSlider extends Component {
               style: {width: this.props.width},
               item: item,
               imageKey: this.props.imageKey,
-              // onPress: this.props.onPress,
+              onPress: this.props.onPress,
               index: this.state.index % this.props.data.length,
               active: index === this.state.index,
               local: this.props.local,
