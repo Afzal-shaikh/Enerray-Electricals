@@ -12,13 +12,17 @@ import {
   ImageBackground,
   ActivityIndicator,
 } from "react-native";
-import FlatListSlider from "../components/FLatListSlider";
+import { SliderBox } from "react-native-image-slider-box";
 
 const screenWidth = Dimensions.get("window").width;
-export default function Description() {
+
+
+
+
+export default function Description(props) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  console.log(data);
+  console.log(data)
 
   useEffect(() => {
     fetch("http://www.rudvedatrading.com/api/productshow/3")
@@ -31,26 +35,20 @@ export default function Description() {
   return (
     <View style={styles.container}>
       {isLoading ? (
-        <View style = {{flex : 1, alignContent : "center",justifyContent : "center"}}>
-          <ActivityIndicator
-            animating= {true}
-            size="large"
-            color="#00ff00"
-          />
+        <View
+          style={{ flex: 1, alignContent: "center", justifyContent: "center" }}
+        >
+          <ActivityIndicator animating={true} size="large" color="#00ff00" />
         </View>
       ) : (
         <SafeAreaView>
           <ScrollView>
-            <FlatListSlider
-              data={data.productimages}
-              timer={5000}
-              onPress={(item) => alert(JSON.stringify(item))}
-              indicatorContainerStyle={{ position: "absolute", bottom: 20 }}
-              indicatorActiveColor={"#8e44ad"}
-              indicatorInActiveColor={"#ffffff"}
-              indicatorActiveWidth={30}
-              animation
-            />
+          <SliderBox 
+            images = { data.productimages.map((item) => item.image_path)}
+            sliderBoxHeight={screenWidth}
+            onCurrentImagePressed={() =>  props.navigation.push("ImageZoomScreen", imagePath =  item.image_path)}
+          />
+      
             <View>
               {/* View for data under the slider  */}
               {/* Features */}
@@ -97,35 +95,48 @@ export default function Description() {
               <Text>Audio Player here</Text>
               {/* this.props.navigation.navigate('player', {title:__TITLE__, filepath:__AUDIO_FILEPATH__}); */}
             </View>
+            
 
-            {/* Flatlist horizontal */}
+
+
+            {/* Flatlist horizontal related products line */}
             <FlatList
               horizontal
               data={data.otherproducts}
+              keyExtractor={(item) => item.user_product_id}
               renderItem={({ item }) => (
-                <View style={styles.item}>
-                  <ImageBackground
-                    style={styles.itemImage}
-                    source={{ uri: item.product_thumbnail_path }}
-                  >
-                    <View
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
+                <TouchableOpacity
+                  style={styles.item}
+                  onPress={() => {
+                    props.navigation.push("Description");
+                    // FIX THIS: - add passing product data to the screen on onpress of this flatlist component
+                  }}
+                >
+                  <View style={styles.item}>
+                    <ImageBackground
+                      style={styles.itemImage}
+                      source={{ uri: item.product_thumbnail_path }}
                     >
-                      <Text>{item.user_product_id}</Text>
-                    </View>
-                  </ImageBackground>
-                </View>
+                      <View
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text>{item.user_product_id}</Text>
+                      </View>
+                    </ImageBackground>
+                  </View>
+                </TouchableOpacity>
               )}
             />
           </ScrollView>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.Button} >
+            <TouchableOpacity style={styles.Button}>
+                        {/* FIX THIS : add email functionality on onpress event for the get a quote touchabel opacity */}
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
           </View>
@@ -199,5 +210,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-

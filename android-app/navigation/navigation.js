@@ -7,6 +7,7 @@ import Category from "../screens/Category";
 import Products from "../screens/Products";
 import Description from "../screens/Description";
 import PlayerScreen from "../components/AudioPlayer";
+import ImageZoomScreen from  '../screens/ImageZoomScreen';
 
 
 const AppNavigator = createStackNavigator({
@@ -32,6 +33,10 @@ const AppNavigator = createStackNavigator({
     Description : {
         screen : Description,
     },
+    ImageZoomScreen : {
+        screen : ImageZoomScreen,
+    },
+
 
 });
 
