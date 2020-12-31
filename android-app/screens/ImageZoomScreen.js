@@ -8,6 +8,8 @@ const screenHeight =   Dimensions.get("window").Height ;
 
 export default function ImageZoomScreen(props) {
 
+  const imagePath = props.navigation.getParam('ImagePath')
+
   console.log(props)
   console.log("props.params === " + props.state)
   return (
@@ -25,8 +27,7 @@ export default function ImageZoomScreen(props) {
       <Image
         style={{ width: screenWidth, height: screenWidth  , backgroundColor : "Red"}}
         source={{
-          uri:
-            "https://rudvedatrading.com/images/ELEGANCE/ELEGANCE_S_3.jpg",
+          uri: imagePath,
         }
         }
       />

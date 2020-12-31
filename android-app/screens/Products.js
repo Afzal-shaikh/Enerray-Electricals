@@ -34,7 +34,7 @@ export default function Products(props) {
         <FlatList
           data={data.allproductdata.data}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.item} onPress = {() => { props.navigation.push("Description")}}>
+            <TouchableOpacity style={styles.item} onPress = {() => { props.navigation.push("Description",{itemId : item.id})}}>
             <ImageBackground style={styles.itemImage} source={{ uri: item.product_thumbnail_path }}>
             <View style={{position: 'absolute', top: 0, left: 0,  justifyContent: 'center', alignItems: 'center'}}>
             <Text >{item.user_product_id}</Text>

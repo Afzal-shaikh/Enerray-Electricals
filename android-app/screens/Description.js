@@ -17,15 +17,18 @@ import { SliderBox } from "react-native-image-slider-box";
 const screenWidth = Dimensions.get("window").width;
 
 
-
-
 export default function Description(props) {
+
+const itemId = props.navigation.getParam("itemId")
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   console.log(data)
 
   useEffect(() => {
-    fetch("http://www.rudvedatrading.com/api/productshow/3")
+    const URL = `http://www.rudvedatrading.com/api/productshow/${itemId}`;
+    console.log("URL===" + URL)
+    fetch(URL)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))
