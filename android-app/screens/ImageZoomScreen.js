@@ -1,5 +1,5 @@
 import ImageZoom from "react-native-image-pan-zoom";
-import { View, Dimensions,Image } from "react-native";
+import { View, Dimensions,Image,SafeAreaView } from "react-native";
 import React from 'react';
 import globlaStyles from '../styles/globalStyles';
 
@@ -13,9 +13,10 @@ export default function ImageZoomScreen(props) {
   console.log(props)
   console.log("props.params === " + props.state)
   return (
+
     <View style = {{ 
       flex: 1,
-      backgroundColor: "#fff",
+      backgroundColor: "#000",
       alignItems: "center",
        justifyContent: "center",}}>
     <ImageZoom
@@ -25,7 +26,7 @@ export default function ImageZoomScreen(props) {
       imageHeight={screenWidth}
     >
       <Image
-        style={{ width: screenWidth, height: screenWidth  , backgroundColor : "Red"}}
+        style={{ width: screenWidth, height: screenWidth  }}
         source={{
           uri: imagePath,
         }
@@ -34,5 +35,6 @@ export default function ImageZoomScreen(props) {
     </ImageZoom>
 
     </View>
+   
   );
 }

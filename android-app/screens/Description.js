@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import {
   StyleSheet,
   View,
@@ -13,6 +14,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
+import AudioPlayer from "../components/AudioPlayer";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -97,9 +99,10 @@ const itemId = props.navigation.getParam("itemId")
 
             {/* Audio Player View  */}
 
-            <View>
+            <View style = {{backgroundColor : "cyan"}}>
               <Text>Audio Player here</Text>
-              {/* this.props.navigation.navigate('player', {title:__TITLE__, filepath:__AUDIO_FILEPATH__}); */}
+              <AudioPlayer />
+              
             </View>
             
 
@@ -114,7 +117,7 @@ const itemId = props.navigation.getParam("itemId")
                 <TouchableOpacity
                   style={styles.item}
                   onPress={() => {
-                    props.navigation.push("Description");
+                    props.navigation.push("Description",{itemId : item.id})
                     // FIX THIS: - add passing product data to the screen on onpress of this flatlist component
                   }}
                 >
@@ -132,7 +135,7 @@ const itemId = props.navigation.getParam("itemId")
                           alignItems: "center",
                         }}
                       >
-                        <Text>{item.user_product_id}</Text>
+                        <Text style={{color : "grey"}} >{item.user_product_id}</Text>
                       </View>
                     </ImageBackground>
                   </View>
@@ -166,7 +169,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cellText: {
-    fontSize: 20,
+    fontSize: 17,
     padding: 10,
   },
   headingText: {

@@ -8,7 +8,7 @@ import {
   StatusBar,
   SafeAreaView,
 } from "react-native";
-import AppNavigator from './navigation/navigation';
+import AppNavigator from "./navigation/navigation";
 
 // Fix This -  remove all the redundant imports
 
@@ -21,12 +21,8 @@ import Description from "./screens/Description";
 
 export default function App() {
   return (
-   
-   <AppNavigator />
- 
-  
-
-   
+      <AppNavigator style = {styles.container} />
+    
   );
 }
 
@@ -36,6 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: Platform.OS === "android" ? (StatusBar.currentHeight + 4) : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 4 : 0,
   },
 });

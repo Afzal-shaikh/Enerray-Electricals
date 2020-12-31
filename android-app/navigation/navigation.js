@@ -35,6 +35,7 @@ const AppNavigator = createStackNavigator({
     },
     ImageZoomScreen : {
         screen : ImageZoomScreen,
+        navigationOptions :{ headerShown : false}
     },
 
 
