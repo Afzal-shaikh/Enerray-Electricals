@@ -21,7 +21,7 @@ import Description from "./screens/Description";
 
 export default function App() {
   return (
-      <AppNavigator style = {styles.container} />
+      <AppNavigator/>
     
   );
 }
