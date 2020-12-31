@@ -32,6 +32,9 @@ export default function Description(props) {
       .finally(() => setLoading(false));
   }, []);
 
+  let imagesPaths = [] ;
+  isLoading ? console.log("no data") : (imagesPaths = (data.productimages.map((item) => item.image_path) )) ;
+
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -44,9 +47,9 @@ export default function Description(props) {
         <SafeAreaView>
           <ScrollView>
           <SliderBox 
-            images = { data.productimages.map((item) => item.image_path)}
+            images = { imagesPaths}
             sliderBoxHeight={screenWidth}
-            onCurrentImagePressed={() =>  props.navigation.push("ImageZoomScreen", imagePath =  item.image_path)}
+            onCurrentImagePressed={index =>  props.navigation.push("ImageZoomScreen",{ImagePath : imagesPaths[index]}) }
           />
       
             <View>

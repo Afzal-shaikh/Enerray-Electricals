@@ -8,7 +8,8 @@ const screenHeight =   Dimensions.get("window").Height ;
 
 export default function ImageZoomScreen(props) {
 
-  console.log("Image zoom")
+  console.log(props)
+  console.log("props.params === " + props.state)
   return (
     <View style = {{ 
       flex: 1,
@@ -26,7 +27,8 @@ export default function ImageZoomScreen(props) {
         source={{
           uri:
             "https://rudvedatrading.com/images/ELEGANCE/ELEGANCE_S_3.jpg",
-        }}
+        }
+        }
       />
     </ImageZoom>
 
