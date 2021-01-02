@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import React ,{useEffect, useState} from 'react';
-import Sound from 'react-native-sound';
+
 
 const img_speaker = require('../assets/ui_speaker.png');
 const img_pause = require('../assets/ui_pause.png');
@@ -24,7 +24,7 @@ export default function AudioPlayer(props) {
 
 let audio 
 useEffect(()=>{
-   audio = new Sound(audioUrl, Sound.MAIN_BUNDLE, error => {console.log(error)});
+   
 
 },[]);
 
@@ -41,11 +41,7 @@ const [isPlaying, setisPlaying] = useState(false)
     
     // events
     function onPlayPauseClicked(){
-      console.log("audio is playing == " + audio.isPlaying())
-      audio.isPlaying() ? audio.pause() : audio.play() 
-     setisPlaying(!isPlaying)
-      
-     return (()=> {audio.stop()})
+     
     }
 
   return (
