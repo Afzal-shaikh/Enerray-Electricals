@@ -19,23 +19,29 @@ import AudioPlayer from '../components/AudioPlayer';
 const screenWidth = Dimensions.get('window').width;
 
 export default function Description(props) {
+  console.log("++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++")
+  
   const itemId = props.navigation.getParam('itemId');
+ 
+  let imagesPaths = [];
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  console.log(data);
+  console.log("isLoading ==" + isLoading);
 
   useEffect(() => {
     const URL = `http://www.rudvedatrading.com/api/productshow/${itemId}`;
     console.log('URL===' + URL);
+    
     fetch(URL)
       .then((response) => response.json())
-      .then((json) => setData(json))
+      .then((json) =>  setData(json))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
 
-  let imagesPaths = [];
+
+//load image paths once data is loaded 
   isLoading
     ? console.log('no data')
     : (imagesPaths = data.productimages.map((item) => item.image_path));
@@ -234,7 +240,7 @@ const styles = StyleSheet.create({
   },
   audioPlayerView: {
     marginVertical: 20,
-    height: 100,
+    height: 200,
   },
   productName: {
     fontSize: 24,
