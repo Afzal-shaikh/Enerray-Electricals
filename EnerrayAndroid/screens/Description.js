@@ -93,18 +93,16 @@ export default function Description(props) {
               })}
             </View>
             {/* Description */}
-            {data.product_description == null ? null : (
+            {(data.productdata.product_description == null )? null : (
               <View>
                 <View style={styles.headingview}>
                   <Text style={styles.headingText}>Description</Text>
                 </View>
                 <View style={styles.row}>
-                  <View style={styles.cell}>
-                    <Text style={styles.cellText}>Description:</Text>
-                  </View>
+
                   <View style={styles.cell}>
                     <Text style={styles.cellText}>
-                      {data.product_description}
+                      {data.productdata.product_description}
                     </Text>
                   </View>
                 </View>
