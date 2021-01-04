@@ -31,6 +31,7 @@ let audio
 useEffect(()=>{
   SoundPlayer.loadUrl(audioUrl)
  let  _onFinishedLoadingURLSubscription = SoundPlayer.addEventListener('FinishedLoadingURL', ({ success, url }) => {
+   setplayingState(STOPPED)
     console.log('finished loading url', success, url)
   })
 
@@ -44,15 +45,15 @@ useEffect(()=>{
 },[]);
 
 //state
-const [playingState, setplayingState] = useState(STOPPED)
+const [playingState, setplayingState] = useState()
 const [currentTime, setCurrentTime] = useState(0)
 const [duration, setDuration] = useState(0)
 const [sliderEditing, setsliderEditing] = useState(false)
 // const [time, setTime] = useState(Date.now());
 
 
-  const audioUrl =
-    'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3';
+  const audioUrl = props.audioURL
+    // 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3';
 
     // events
 
@@ -64,6 +65,7 @@ const [sliderEditing, setsliderEditing] = useState(false)
     }
 
     function onPlayPauseClicked(){
+
 
       switch(playingState){
         case STOPPED : 
@@ -109,6 +111,7 @@ const [sliderEditing, setsliderEditing] = useState(false)
 
       </View>
       <View style={{flex: 1}}>
+      {/* <Text>{audioUrl}</Text> */}
         <Slider
           style={styles.slider}
           minimumValue={0}
@@ -129,11 +132,11 @@ const [sliderEditing, setsliderEditing] = useState(false)
         />
       </View>
       <View style={styles.playerButtonView}>
-        <Text style={styles.timeText}>{secsToMin(currentTime).minutes} : {secsToMin(currentTime).seconds}  </Text>
+        <Text style={styles.timeText}>{secsToMin(currentTime).minutes} : {secsToMin(currentTime).seconds}</Text>
         <TouchableOpacity style={styles.button} onPress = {() => onPlayPauseClicked()  }>
          <Image source={(playingState == PLAYING ) ? img_pause : img_play} resizeMode={'contain'} style = {styles.playImage}/>
         </TouchableOpacity>
-        <Text style={styles.timeText}>{secsToMin(duration).minutes} : {secsToMin(duration).seconds} </Text>
+        <Text style={styles.timeText}>{secsToMin(duration).minutes} : {secsToMin(duration).seconds}</Text>
       </View>
     </View>
   );
@@ -157,7 +160,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    height: 40,
+    height: 45,
     marginHorizontal: 40,
     backgroundColor: '#5761b2',
     borderRadius: 20,

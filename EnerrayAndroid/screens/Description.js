@@ -17,6 +17,8 @@ import {SliderBox} from 'react-native-image-slider-box';
 import AudioPlayer from '../components/AudioPlayer';
 
 const screenWidth = Dimensions.get('window').width;
+const HINDI = "hindi";
+const ENGLISH ="english";
 
 export default function Description(props) {
   console.log("++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++")
@@ -27,6 +29,7 @@ export default function Description(props) {
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [audioSelected, setaudioSelected] = useState(ENGLISH)
   console.log("isLoading ==" + isLoading);
 
   useEffect(() => {
@@ -112,8 +115,14 @@ export default function Description(props) {
             {/* Audio Player View  */}
 
             <View style={styles.audioPlayerView}>
-              <Text>Audio Player here</Text>
-              <AudioPlayer />
+            <Text>Audio Player here</Text>
+            <View style = {{flexDirection : 'row' ,flex : 1 ,justifyContent : "center" }} >
+              <TouchableOpacity  style = {{flex : 1,  backgroundColor :  (audioSelected == HINDI) ? "green" : "gray" }}  onPress = {() => setaudioSelected(HINDI)}><Text> Hindi</Text></TouchableOpacity>
+              <TouchableOpacity  style = {{flex : 1,   backgroundColor :  (audioSelected == ENGLISH) ? "green" : "gray" }}  onPress = {() => setaudioSelected(ENGLISH)} ><Text> English</Text></TouchableOpacity>
+            </View>
+              {(audioSelected==HINDI) && (<AudioPlayer audioURL = 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'/>)}
+              {(audioSelected==ENGLISH) && (<AudioPlayer audioURL =  'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3' />)}
+              {/* <AudioPlayer /> */}
             </View>
 
             {/* Flatlist horizontal related products line */}
@@ -238,7 +247,9 @@ const styles = StyleSheet.create({
   },
   audioPlayerView: {
     marginVertical: 20,
-    height: 200,
+   flex : 1,
+   minHeight : 300,
+
   },
   productName: {
     fontSize: 24,
