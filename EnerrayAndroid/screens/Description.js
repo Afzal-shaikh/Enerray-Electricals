@@ -21,9 +21,14 @@ const HINDI = "hindi";
 const ENGLISH ="english";
 
 export default function Description(props) {
-  console.log("++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++")
+  console.log("++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++" )
+  console.log(props)
   
   const itemId = props.navigation.getParam('itemId');
+
+   
+
+
  
   let imagesPaths = [];
 
@@ -127,6 +132,8 @@ export default function Description(props) {
 
             {/* Flatlist horizontal related products line */}
             <FlatList
+              style = {{  
+                          flexGrow: 0}}
               horizontal
               data={data.otherproducts}
               keyExtractor={(item) => item.user_product_id}
@@ -160,7 +167,7 @@ export default function Description(props) {
             />
           </ScrollView>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.Button}>
+            <TouchableOpacity style={styles.Button} onPress = {getQuote()}>
               {/* FIX THIS : add email functionality on onpress event for the get a quote touchabel opacity */}
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
@@ -169,10 +176,16 @@ export default function Description(props) {
       )}
     </View>
   );
+
+
+  //functions
+  function getQuote(){
+    
+  }
 }
 
 const itemMargin = 1;
-const itemWidth = screenWidth / 2 - 20;
+const itemWidth = screenWidth / 2 - 60;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
