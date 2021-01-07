@@ -27,7 +27,6 @@ export default function AudioPlayer(props) {
 
   console.log("AudioPlayer screen rendering")//
 
-let audio 
 useEffect(()=>{
   SoundPlayer.loadUrl(audioUrl)
  let  _onFinishedLoadingURLSubscription = SoundPlayer.addEventListener('FinishedLoadingURL', ({ success, url }) => {
@@ -118,8 +117,10 @@ const [sliderEditing, setsliderEditing] = useState(false)
           maximumValue={duration}
           value={currentTime}
           onValueChange = { val => setCurrentTime(val) }
-          onSlidingComplete = {() => {SoundPlayer.seek(currentTime)
-          SoundPlayer.play()
+          onSlidingComplete = {() => {
+            
+               SoundPlayer.seek(currentTime)
+               SoundPlayer.play()
           }}
           minimumTrackTintColor="#FFFFFF"
           maximumTrackTintColor="#000000"
@@ -127,7 +128,7 @@ const [sliderEditing, setsliderEditing] = useState(false)
           onTouchEnd = {() => {
             setsliderEditing(false)
            
-            console.log("curren time = " + currentTime)
+            // console.log("curren time = " + currentTime)
             }}
         />
       </View>
@@ -148,7 +149,8 @@ const styles = StyleSheet.create({
 
   container : {
     flex: 1,
-    backgroundColor: '#90faa7',
+    // backgroundColor: '#90faa7',
+    // backgroundColor: '#d5dde8',
     justifyContent: 'center',
     alignContent: 'center',
     width: screenWidth,
@@ -178,7 +180,6 @@ const styles = StyleSheet.create({
   },
   playerButtonView: {
     flexDirection: 'row',
-    flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
     marginTop : 20,
@@ -186,12 +187,10 @@ const styles = StyleSheet.create({
     // backgroundColor: 'blue',
   },
   slider: {
-    padding: 20,
+    padding: 5,
     marginHorizontal: 20,
   },
   playImage:{
     flex : 1,
-   
-  
   },
 });

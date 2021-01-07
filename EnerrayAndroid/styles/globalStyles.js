@@ -35,8 +35,8 @@ export const globalStyles = StyleSheet.create({
    
   },
   textLink : {
-    color : "blue"
-    
+    color : "blue",
+    textAlign : 'center'
   },
   scrollView : {
     backgroundColor : "#fff"

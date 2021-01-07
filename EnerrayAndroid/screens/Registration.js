@@ -31,7 +31,8 @@ export default function Registration(props){
         <View style = {{ marginTop : 20 ,}}> 
         <Text>Already a member? 
         <TouchableOpacity  onPress = {() => { props.navigation.replace("Login")}} >
-        <Text style = {globalStyles.textLink }> Log in</Text>
+        <View style={{ justifyContent: 'center',alignContent : 'center'}}><Text style = {globalStyles.textLink }> Log in</Text></View>
+        
         </TouchableOpacity>
         </Text>
         </View>
