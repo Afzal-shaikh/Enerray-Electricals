@@ -20,10 +20,10 @@ export default function Products(props) {
   return (
     <View style={styles.container}>
 
-{/* Search Bar */}
-      <View style={{ minHeight : 60}}>
+      {/* Search Bar */}
+      <View style={{ minHeight : 50 , shadowColor : "#ccc" , shadowOffset :{ width: 0, height: 2 }}}>
           <TextInput 
-          style={{flex :1 ,padding : 10 , height : 40 , minHeight : 60}} 
+          style={{flex :1 ,padding : 5 , height : 40 , minHeight : 60 , fontSize : 20}} 
           placeholder = "Search.."
           onChangeText = {(text) => {
             setLoading(true)

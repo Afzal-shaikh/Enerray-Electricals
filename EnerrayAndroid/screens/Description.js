@@ -12,44 +12,43 @@ import {
   FlatList,
   ImageBackground,
   ActivityIndicator,
+  Switch,
 } from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
 import AudioPlayer from '../components/AudioPlayer';
+import RNSmtpMailer from 'react-native-smtp-mailer';
 
 const screenWidth = Dimensions.get('window').width;
-const HINDI = "hindi";
-const ENGLISH ="english";
+const HINDI = 'hindi';
+const ENGLISH = 'english';
 
 export default function Description(props) {
-  console.log("++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++" )
-  console.log(props)
-  
+  console.log(
+    '++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++',
+  );
+  console.log(props);
+
   const itemId = props.navigation.getParam('itemId');
 
-   
-
-
- 
   let imagesPaths = [];
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [audioSelected, setaudioSelected] = useState(ENGLISH)
-  console.log("isLoading ==" + isLoading);
+  const [audioSelected, setaudioSelected] = useState(ENGLISH);
+  console.log('isLoading ==' + isLoading);
 
   useEffect(() => {
     const URL = `http://www.rudvedatrading.com/api/productshow/${itemId}`;
     console.log('URL===' + URL);
-    
+
     fetch(URL)
       .then((response) => response.json())
-      .then((json) =>  setData(json))
+      .then((json) => setData(json))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
 
-
-//load image paths once data is loaded 
+  //load image paths once data is loaded
   isLoading
     ? console.log('no data')
     : (imagesPaths = data.productimages.map((item) => item.image_path));
@@ -62,9 +61,9 @@ export default function Description(props) {
           <ActivityIndicator animating={true} size="large" color="#00ff00" />
         </View>
       ) : (
-        <SafeAreaView>
-          <ScrollView>
-          <Text style={styles.productName}>
+        <SafeAreaView style={{flex : 1}} >
+          <ScrollView >
+            <Text style={styles.productName}>
               {data.productdata.product_name}
             </Text>
             <SliderBox
@@ -76,12 +75,12 @@ export default function Description(props) {
                 })
               }
             />
-          
+
             <View>
               {/* View for data under the slider  */}
               {/* Features */}
               <View style={styles.headingview}>
-                <Text style={styles.headingText}>Features :</Text>
+                <Text style={styles.headingText}>Features</Text>
               </View>
               {data.productfetures.map((item) => {
                 return (
@@ -101,13 +100,12 @@ export default function Description(props) {
               })}
             </View>
             {/* Description */}
-            {(data.productdata.product_description == null )? null : (
+            {data.productdata.product_description == null ? null : (
               <View>
                 <View style={styles.headingview}>
                   <Text style={styles.headingText}>Description</Text>
                 </View>
                 <View style={styles.row}>
-
                   <View style={styles.cell}>
                     <Text style={styles.cellText}>
                       {data.productdata.product_description}
@@ -118,22 +116,72 @@ export default function Description(props) {
             )}
 
             {/* Audio Player View  */}
-
+            <View style={styles.headingview}>
+                  <Text style={styles.headingText}>Audio Player</Text>
+                </View>
             <View style={styles.audioPlayerView}>
-            <Text>Audio Player here</Text>
-            <View style = {{flexDirection : 'row' ,flex : 1 ,justifyContent : "center" }} >
-              <TouchableOpacity  style = {{flex : 1,  backgroundColor :  (audioSelected == HINDI) ? "green" : "gray" }}  onPress = {() => setaudioSelected(HINDI)}><Text> Hindi</Text></TouchableOpacity>
-              <TouchableOpacity  style = {{flex : 1,   backgroundColor :  (audioSelected == ENGLISH) ? "green" : "gray" }}  onPress = {() => setaudioSelected(ENGLISH)} ><Text> English</Text></TouchableOpacity>
-            </View>
-              {(audioSelected==HINDI) && (<AudioPlayer audioURL = 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'/>)}
-              {(audioSelected==ENGLISH) && (<AudioPlayer audioURL =  'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3' />)}
+              {/* <Text>Audio Player here</Text> */}
+              {/* <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent : 'center',
+                  height : 40
+                }}>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    // backgroundColor: audioSelected == HINDI ? '#d5dde8' : '#85898f',
+                    justifyContent : 'center',
+                    alignContent : 'center',
+                  }}
+                  onPress={() => setaudioSelected(HINDI)}>
+                  <Text style = {{ textAlign : 'center' , fontSize : 15}} > Hindi</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    // backgroundColor: audioSelected == ENGLISH ? '#d5dde8' : '#85898f',
+                    justifyContent : 'center',
+                    alignContent : 'center',
+                  }}
+                  onPress={() => setaudioSelected(ENGLISH)}>
+                  <Text style = {{ textAlign : 'center' , fontSize : 15}}> English</Text>
+                </TouchableOpacity>
+              </View> */}
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent : 'center',
+                  height : 40
+                }}>
+                  <View style={{ justifyContent: 'center',alignContent : 'center',height : 40}}><Text style = {styles.cellText}>Hindi</Text></View>
+                  <Switch 
+                   trackColor={{true: '#ccc', false: '#ccc'}}
+                   value = {(audioSelected == HINDI) ? false : true}
+                   onValueChange = {(value) => value ? setaudioSelected(ENGLISH) : setaudioSelected(HINDI)}
+                  
+                    />
+                  <View style={{ justifyContent: 'center',alignContent : 'center',height : 40}}><Text style = {styles.cellText} >English</Text></View>
+                </View>
+              {audioSelected == HINDI && (
+                <AudioPlayer audioURL="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" />
+              )}
+              {audioSelected == ENGLISH && (
+                <AudioPlayer audioURL="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" />
+              )}
               {/* <AudioPlayer /> */}
             </View>
 
             {/* Flatlist horizontal related products line */}
+            <View style={styles.headingview}>
+                  <Text style={styles.headingText}>Related Products</Text>
+                </View>
             <FlatList
-              style = {{  
-                          flexGrow: 0}}
+              style={{
+                flexGrow: 0,
+              }}
               horizontal
               data={data.otherproducts}
               keyExtractor={(item) => item.user_product_id}
@@ -167,7 +215,7 @@ export default function Description(props) {
             />
           </ScrollView>
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.Button} onPress = {getQuote()}>
+            <TouchableOpacity style={styles.button} onPress={getQuote()}>
               {/* FIX THIS : add email functionality on onpress event for the get a quote touchabel opacity */}
               <Text style={styles.quoteText}>Get a Quote</Text>
             </TouchableOpacity>
@@ -177,10 +225,9 @@ export default function Description(props) {
     </View>
   );
 
-
   //functions
-  function getQuote(){
-    
+  function getQuote() {
+    //Add get quote functionality code here
   }
 }
 
@@ -193,8 +240,8 @@ const styles = StyleSheet.create({
   row: {
     width: screenWidth,
     flexDirection: 'row',
-    backgroundColor: '#d5dde8',
-    marginTop: 10,
+    // backgroundColor: '#d5dde8',
+    // marginTop: 10,
   },
   cell: {
     flex: 1,
@@ -202,6 +249,7 @@ const styles = StyleSheet.create({
   cellText: {
     fontSize: 17,
     padding: 10,
+    textAlign : 'justify'
   },
   cellTextBold: {
     fontSize: 17,
@@ -213,7 +261,7 @@ const styles = StyleSheet.create({
     // textDecorationLine: 'underline',
     fontSize: 20,
     padding: 10,
-    marginTop : 30,
+    marginTop: 10,
     flex: 1,
     alignContent: 'center',
     justifyContent: 'center',
@@ -229,10 +277,12 @@ const styles = StyleSheet.create({
     width: screenWidth,
     backgroundColor: 'cyan',
     height: 40,
+    minHeight: 40,
+    bottom: 0,
   },
   button: {
     flex: 1,
-    backgroundColor: 'cyan',
+    backgroundColor: '#030682',
     justifyContent: 'center',
     alignContent: 'center',
   },
@@ -259,10 +309,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   audioPlayerView: {
-    marginVertical: 20,
-   flex : 1,
-   minHeight : 300,
-
+    // marginVertical: 20,
+    minHeight: 200,
+    justifyContent : 'center',
+    alignContent : 'center'
   },
   productName: {
     fontSize: 24,
