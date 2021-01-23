@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
 import AudioPlayer from '../components/AudioPlayer';
+import RNSmtpMailer from 'react-native-smtp-mailer';
 
 const screenWidth = Dimensions.get('window').width;
 const HINDI = 'hindi';
