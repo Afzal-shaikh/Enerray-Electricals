@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "448139812962",
+    "project_id": "enerrayelectrical-4de08",
+    "storage_bucket": "enerrayelectrical-4de08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448139812962:android:c060e7962761a39904f13b",
+        "android_client_info": {
+          "package_name": "com.enerrayandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448139812962-d5opbgr8oitt948t4boqhl3lbrpcf6l1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.enerrayandroid",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "448139812962-gp48b6chgr4nckeb09fupebm7qcj74f6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAklGLEPDZoDEKYGYCFC9dq77Gqo72F3QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448139812962-gp48b6chgr4nckeb09fupebm7qcj74f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
