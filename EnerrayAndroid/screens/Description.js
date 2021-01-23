@@ -23,16 +23,19 @@ const HINDI = 'hindi';
 const ENGLISH = 'english';
 
 
+
+
 export default function Description(props) {
 
-
+ 
+//to check how many times this screen gets rendered and view the props
   console.log(
     '++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++',
   );
   console.log(JSON.stringify(props));
 
   const itemId = props.navigation.getParam('itemId');
-   
+  const productName = props.navigation.getParam('productName');
 
   let imagesPaths = [];
 
@@ -42,6 +45,7 @@ export default function Description(props) {
   console.log('isLoading ==' + isLoading);
 
   useEffect(() => {
+
 
     const URL = `http://www.rudvedatrading.com/api/productshow/${itemId}`;
     console.log('URL===' + URL);
@@ -68,6 +72,7 @@ export default function Description(props) {
       ) : (
         <SafeAreaView style={{flex : 1}} >
           <ScrollView >
+          
             <Text style={styles.productName}>
               {data.productdata.product_name}
             </Text>
@@ -236,6 +241,10 @@ export default function Description(props) {
   }
 }
 
+
+
+
+// styles
 const itemMargin = 1;
 const itemWidth = screenWidth / 2 - 60;
 const styles = StyleSheet.create({
