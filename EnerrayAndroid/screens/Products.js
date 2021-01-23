@@ -80,7 +80,7 @@ export default function Products(props) {
               <TouchableOpacity
                 style={styles.item}
                 onPress={() => {
-                  props.navigation.push('Description', {itemId: item.id});
+                  props.navigation.push('Description', {itemId: item.id ,productName: item.product_name});
                 }}>
                 <ImageBackground
                   style={styles.itemImage}

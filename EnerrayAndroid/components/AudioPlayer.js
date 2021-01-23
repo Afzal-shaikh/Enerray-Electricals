@@ -58,7 +58,7 @@ const [sliderEditing, setsliderEditing] = useState(false)
 
      async function getPlayerInfo  (){
      let playerInfo = await SoundPlayer.getInfo()
-     console.log(playerInfo)
+    //  console.log(playerInfo)
      setCurrentTime( playerInfo.currentTime)
      setDuration(playerInfo.duration)
     }

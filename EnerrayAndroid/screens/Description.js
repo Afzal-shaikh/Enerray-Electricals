@@ -16,19 +16,23 @@ import {
 } from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
 import AudioPlayer from '../components/AudioPlayer';
-import RNSmtpMailer from 'react-native-smtp-mailer';
+
 
 const screenWidth = Dimensions.get('window').width;
 const HINDI = 'hindi';
 const ENGLISH = 'english';
 
+
 export default function Description(props) {
+
+
   console.log(
     '++++++++++++++++++++++++Description screen rendering+++++++++++++++++++++++++++++',
   );
-  console.log(props);
+  console.log(JSON.stringify(props));
 
   const itemId = props.navigation.getParam('itemId');
+   
 
   let imagesPaths = [];
 
@@ -38,6 +42,7 @@ export default function Description(props) {
   console.log('isLoading ==' + isLoading);
 
   useEffect(() => {
+
     const URL = `http://www.rudvedatrading.com/api/productshow/${itemId}`;
     console.log('URL===' + URL);
 

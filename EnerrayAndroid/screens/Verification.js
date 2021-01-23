@@ -94,11 +94,12 @@ export default function Verification(props) {
             console.log(json)
             if (json.success == "true") {
               props.navigation.replace("Category")
+            }else{
+              alert(json.message)
             }
           })
           .catch((error) => {
              console.log(error);//asl Divyaraj to make the api return json 
-             alert(`${json.message}`)
           })
           .finally(() => {console.log("finally")});
   }
