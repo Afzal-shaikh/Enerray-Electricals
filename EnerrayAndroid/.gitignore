@@ -64,3 +64,4 @@ buck-out/
 
 #heap dump files
 *.hprof
+/android/*.hprof
