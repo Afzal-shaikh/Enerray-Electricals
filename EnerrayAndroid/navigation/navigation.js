@@ -32,7 +32,7 @@ const AppNavigator = createStackNavigator({
     },
     Description : {
         screen : Description,
-       
+        navigationOptions :{ headerShown : false}
 
     },
     ImageZoomScreen : {

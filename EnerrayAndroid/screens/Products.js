@@ -14,6 +14,7 @@ import {
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 
 const {width, height} = Dimensions.get('window');
+const img_back = require('../assets/back.png');
 
 export default function Products(props) {
   const productType = props.navigation.getParam('productType');

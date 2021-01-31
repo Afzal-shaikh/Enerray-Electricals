@@ -47,9 +47,7 @@ export default function Registration(props){
         <Button
              style={globalStyles.button}
              title = "Submit" 
-             onPress = {() => {
-           
-            validateInformation()
+             onPress = {() => { validateInformation()
                }}
             />
         </View>

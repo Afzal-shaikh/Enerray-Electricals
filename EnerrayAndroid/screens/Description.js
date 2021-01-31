@@ -13,6 +13,7 @@ import {
   ImageBackground,
   ActivityIndicator,
   Switch,
+  Image,
 } from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
 import AudioPlayer from '../components/AudioPlayer';
@@ -22,6 +23,7 @@ const screenWidth = Dimensions.get('window').width;
 const HINDI = 'hindi';
 const ENGLISH = 'english';
 
+const img_back = require('../assets/back.png');
 
 
 
@@ -66,16 +68,21 @@ export default function Description(props) {
     <View style={styles.container}>
       {isLoading ? (
         <View
-          style={{flex: 1, alignContent: 'center', justifyContent: 'center'}}>
+          style={{flex: 1, alignContent: 'center', justifyContent: 'center' , alignItems : 'center'}}>
           <ActivityIndicator animating={true} size="large" color="#00ff00" />
         </View>
       ) : (
         <SafeAreaView style={{flex : 1}} >
           <ScrollView >
-          
+            <View style={{flexDirection:'row' , marginHorizontal: 3, justifyContent : 'center'}}>
+            <TouchableOpacity style={{height : 30 , width : 30 , margin:10}} onPress={()=> {props.navigation.goBack()}}>
+            <Image source={img_back} resizeMode={'contain'} style = {{flex:1}}/>
+            </TouchableOpacity>
             <Text style={styles.productName}>
               {data.productdata.product_name}
             </Text>
+            </View>
+            
             <SliderBox
               images={imagesPaths}
               sliderBoxHeight={screenWidth}
@@ -334,6 +341,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
+    textAlign: 'left',
   },
 });
