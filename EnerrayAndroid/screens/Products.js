@@ -35,10 +35,15 @@ export default function Products(props) {
           minHeight: 50,
           shadowColor: '#ccc',
           shadowOffset: {width: 0, height: 2},
+          flexDirection : 'row'
         }}>
+        <TouchableOpacity style={{height : 35 , width : 35 , margin:10}} onPress={()=> {props.navigation.goBack()}}>
+            <Image source={img_back} resizeMode={'contain'} style = {{flex:1}}/>
+            </TouchableOpacity>
+
         <TextInput
           style={{flex: 1, padding: 5, height: 40, minHeight: 60, fontSize: 20}}
-          placeholder="Search.."
+          placeholder="Search products..."
           onChangeText={(text) => {
             setLoading(true);
             // let searchUrl = `http://www.rudvedatrading.com/api/productsearch/${text}/${productType}`;

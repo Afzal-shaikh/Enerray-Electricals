@@ -29,6 +29,7 @@ const AppNavigator = createStackNavigator({
     },
     Products : {
         screen : Products,
+        navigationOptions :{ headerShown : false}
     },
     Description : {
         screen : Description,
