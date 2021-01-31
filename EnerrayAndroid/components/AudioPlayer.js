@@ -58,9 +58,15 @@ const [sliderEditing, setsliderEditing] = useState(false)
 
      async function getPlayerInfo  (){
      let playerInfo = await SoundPlayer.getInfo()
-    //  console.log(playerInfo)
+     console.log(playerInfo)
      setCurrentTime( playerInfo.currentTime)
      setDuration(playerInfo.duration)
+
+     if(playerInfo.currentTime == playerInfo.duration){
+       setplayingState(STOPPED)
+
+      
+     }
     }
 
     function onPlayPauseClicked(){
@@ -133,7 +139,7 @@ const [sliderEditing, setsliderEditing] = useState(false)
         />
       </View>
       <View style={styles.playerButtonView}>
-        <Text style={styles.timeText}>{secsToMin(currentTime).minutes} : {secsToMin(currentTime).seconds}</Text>
+        <Text style={styles.timeText}>{secsToMin(currentTime).minutes } : {secsToMin(currentTime).seconds}</Text>
         <TouchableOpacity style={styles.button} onPress = {() => onPlayPauseClicked()  }>
          <Image source={(playingState == PLAYING ) ? img_pause : img_play} resizeMode={'contain'} style = {styles.playImage}/>
         </TouchableOpacity>

@@ -176,17 +176,18 @@ export default function Description(props) {
                   <View style={{ justifyContent: 'center',alignContent : 'center',height : 40}}><Text style = {styles.cellText}>Hindi</Text></View>
                   <Switch 
                    trackColor={{true: '#ccc', false: '#ccc'}}
+                   thumbColor={ "#5761b2"}
                    value = {(audioSelected == HINDI) ? false : true}
                    onValueChange = {(value) => value ? setaudioSelected(ENGLISH) : setaudioSelected(HINDI)}
                   
                     />
                   <View style={{ justifyContent: 'center',alignContent : 'center',height : 40}}><Text style = {styles.cellText} >English</Text></View>
                 </View>
-              {audioSelected == HINDI && (
-                <AudioPlayer audioURL="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" />
-              )}
               {audioSelected == ENGLISH && (
-                <AudioPlayer audioURL="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" />
+                <AudioPlayer audioURL={data.productaudios[0].audio_path} />
+              )}
+              {audioSelected == HINDI && (
+                <AudioPlayer audioURL= {data.productaudios[1].audio_path} />
               )}
               {/* <AudioPlayer /> */}
             </View>
@@ -296,7 +297,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: screenWidth,
-    backgroundColor: 'cyan',
+    backgroundColor: 'white',
     height: 40,
     minHeight: 40,
     bottom: 0,

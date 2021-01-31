@@ -12,14 +12,15 @@ export default function Category(props){
        
         <View style = {styles.categoryView}>
         <TouchableOpacity 
+       
         // uncomment this when solar api is added
         // onPress = {() => { props.navigation.push("Products", {productType : "solar"})}}
         >
-        <Image  source ={require('../assets/logo1.png')} style = {styles.image}/>
+        <Image  source ={require('../assets/solar00.png')} style = {styles.image} />
         </TouchableOpacity>
        
         <TouchableOpacity onPress = {() => { props.navigation.push("Products", {productType : "fan"})}}>
-        <Image source ={require('../assets/logo1.png')} style = {styles.image}/>
+        <Image source ={require('../assets/fan00.png')} style = {styles.image}  />
         </TouchableOpacity>
         </View>
         
@@ -40,13 +41,15 @@ const styles = StyleSheet.create({
       justifyContent: "center",
   },
   image:{
-      backgroundColor : "black",
+      // backgroundColor : "black",
       padding : 20,
       margin : 20,
       width : 150,
       height : 150,
       borderRadius : 200,
-      
+      borderWidth :2 ,
+      borderColor: 'black',
+      flex:1,
 
   }
 });
