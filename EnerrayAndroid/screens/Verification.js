@@ -11,6 +11,7 @@ import {
 import WavyHeader from '../components/WavyHeader';
 import {globalStyles} from '../styles/globalStyles';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Verification(props) {
   const fullName = props.navigation.getParam('fullName');
@@ -89,11 +90,19 @@ export default function Verification(props) {
 
         fetch(createUserApi , requestOptions)
           .then((response) => response.json())
-          .then((json) => {
+          .then(async (json) => {
             // add code to save the success response in context
             console.log(json)
             if (json.success == "true") {
-              props.navigation.replace("Category")
+              try {
+                await AsyncStorage.setItem('@user_name', `${fullName}`)
+                await AsyncStorage.setItem('@user_mail',`${email}`)
+                await AsyncStorage.setItem('@user_phone',`${mobileNo}`)
+                props.navigation.replace('Category');
+              } catch (e) {
+                // saving error
+                console.log("saving error")
+              }
             }else{
               alert(json.message)
             }

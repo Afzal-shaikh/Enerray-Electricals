@@ -133,39 +133,11 @@ export default function Description(props) {
             )}
 
             {/* Audio Player View  */}
+            
             <View style={styles.headingview}>
                   <Text style={styles.headingText}>Audio Player</Text>
                 </View>
             <View style={styles.audioPlayerView}>
-              {/* <Text>Audio Player here</Text> */}
-              {/* <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignContent : 'center',
-                  height : 40
-                }}>
-                <TouchableOpacity
-                  style={{
-                    flex: 1,
-                    // backgroundColor: audioSelected == HINDI ? '#d5dde8' : '#85898f',
-                    justifyContent : 'center',
-                    alignContent : 'center',
-                  }}
-                  onPress={() => setaudioSelected(HINDI)}>
-                  <Text style = {{ textAlign : 'center' , fontSize : 15}} > Hindi</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    flex: 1,
-                    // backgroundColor: audioSelected == ENGLISH ? '#d5dde8' : '#85898f',
-                    justifyContent : 'center',
-                    alignContent : 'center',
-                  }}
-                  onPress={() => setaudioSelected(ENGLISH)}>
-                  <Text style = {{ textAlign : 'center' , fontSize : 15}}> English</Text>
-                </TouchableOpacity>
-              </View> */}
               <View
                 style={{
                   flexDirection: 'row',
@@ -184,10 +156,10 @@ export default function Description(props) {
                   <View style={{ justifyContent: 'center',alignContent : 'center',height : 40}}><Text style = {styles.cellText} >English</Text></View>
                 </View>
               {audioSelected == ENGLISH && (
-                <AudioPlayer audioURL={data.productaudios[0].audio_path} />
+                <AudioPlayer audioURL={data.productaudios.length > 0 ? data.productaudios[0].audio_path : "http://rudvedatrading.com/audios/Cat Meowing-SoundBible.com-781322082.mp3" } />
               )}
               {audioSelected == HINDI && (
-                <AudioPlayer audioURL= {data.productaudios[1].audio_path} />
+                <AudioPlayer audioURL= {data.productaudios.length > 0 ? data.productaudios[1].audio_path : "http://rudvedatrading.com/audios/Cat Meowing-SoundBible.com-781322082.mp3"  } />
               )}
               {/* <AudioPlayer /> */}
             </View>

@@ -11,11 +11,29 @@ import {
 } from 'react-native';
 import WavyHeader from '../components/WavyHeader';
 import {globalStyles} from '../styles/globalStyles';
-import Registration from './Registration';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login(props) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    (async () => {
+
+      try {
+        const value = await AsyncStorage.getItem('@user_name')
+        if(value !== null) {
+          // value previously stored
+          console.log("value stored")
+          props.navigation.replace('Category');
+        }
+      } catch(e) {
+        // error reading value
+        console.log("value not stored")
+      }
+      
+    })();
+}, []);
 
   return (
     <ScrollView style={globalStyles.scrollView}>
@@ -44,8 +62,8 @@ export default function Login(props) {
             title="Submit"
             onPress={() => {
               console.log(userName, password);
-               props.navigation.replace("Category")
-              // callLoginApi();
+              // props.navigation.replace('Category');
+              callLoginApi();
             }}
           />
         </View>
@@ -79,12 +97,20 @@ export default function Login(props) {
 
       fetch(loginUrl, requestOptions)
         .then((response) => response.json())
-        .then((json) => {
-          // add code to save the success response in context
-          console.log(json);
-          if (json.success == 'true') {
+        .then(async (json) => {
+          console.log(json)
+          if (json.success == 'true'){
+          try {
+            await AsyncStorage.setItem('@user_name', json.user.user_name)
+            await AsyncStorage.setItem('@user_mail', json.user.user_mail)
+            await AsyncStorage.setItem('@user_phone', json.user.user_phone)
             props.navigation.replace('Category');
+          } catch (e) {
+            // saving error
+            console.log("saving error")
           }
+          }
+          
         })
         .catch((error) => {
           console.log(error); //asl Divyaraj to make the api return json
